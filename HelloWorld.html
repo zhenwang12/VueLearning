@@ -1,0 +1,51 @@
+<html lang="zh">
+
+<head>
+    <title></title>
+</head>
+<body>
+<section id="app">
+    <ul>
+        <li v-for="(item, index) in list" :key="item.id">
+            <div>{{item.title}}</div>
+            <div>{{item.source}}</div>
+            <div>{{item.time}}</div>
+            <img :src="item.img"/>
+        </li>
+    </ul>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            list: [{
+                cmtcount: 0,
+                id: 0,
+                img: '',
+                source: '',
+                time: '',
+                title: ''
+            }]
+        },
+        beforeCreate() {
+            console.log('beforeCreate')
+        },
+        async created() {
+            console.log('created')
+            const res = await axios.get("http://hmajax.itheima.net/api/news")
+            this.list = res.data.data
+        },
+        beforeMount() {
+
+        },
+        mounted() {
+
+        }
+    })
+</script>
+</body>
+
+</html>
