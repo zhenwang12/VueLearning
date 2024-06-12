@@ -1,51 +1,148 @@
-<html lang="zh">
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
     <title></title>
+    <style>td {
+        width: 120px;
+        text-align: center;
+    }</style>
 </head>
 <body>
 <section id="app">
-    <ul>
-        <li v-for="(item, index) in list" :key="item.id">
-            <div>{{item.title}}</div>
-            <div>{{item.source}}</div>
-            <div>{{item.time}}</div>
-            <img :src="item.img"/>
-        </li>
-    </ul>
+    <div class="hrz">
+        <input type="text" placeholder="名称" style="margin-right: 50px" v-model="name">
+        <input type="text" placeholder="价格" style="margin-right: 50px" v-model="price">
+        <button @click="addItem">添加</button>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <td>序号</td>
+            <td>事项</td>
+            <td>花费</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="(item, index) in list" :key="item.id">
+            <td>{{index + 1}}</td>
+            <td>{{item.name}}</td>
+            <td :class="{red: item.price>300}">{{item.price.toFixed(2)}}</td>
+            <td @click="deleteItem(item.id)"><a href="#">删除</a></td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td>合计：{{totalPrice}}</td>
+        </tr>
+        </tfoot>
+    </table>
+
+    <div style="width: 600px;height: 600px;margin-top: 40px" id="chart"></div>
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
 <script>
     const app = new Vue({
         el: '#app',
         data: {
-            list: [{
-                cmtcount: 0,
-                id: 0,
-                img: '',
-                source: '',
-                time: '',
-                title: ''
-            }]
+            list: [],
+            name: '',
+            price: '',
         },
-        beforeCreate() {
-            console.log('beforeCreate')
-        },
-        async created() {
-            console.log('created')
-            const res = await axios.get("http://hmajax.itheima.net/api/news")
-            this.list = res.data.data
-        },
-        beforeMount() {
-
+        created() {
+            this.getList()
         },
         mounted() {
-
+            this.myChart = echarts.init(document.getElementById('chart'))
+            let option = {
+                title: {
+                    text: '花费清单',
+                    subtext: '',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'item'
+                },
+                legend: {
+                    orient: 'vertical',
+                    left: 'left'
+                },
+                series: [
+                    {
+                        name: '消费',
+                        type: 'pie',
+                        radius: '50%',
+                        data: [],
+                        emphasis: {
+                            itemStyle: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }
+                ]
+            }
+            this.myChart.setOption(option)
+        },
+        methods: {
+            async getList() {
+                const res = await axios.get("https://applet-base-api-t.itheima.net/bill", {
+                    params: {
+                        creator: 'wz'
+                    }
+                })
+                this.list = res.data.data
+                this.myChart.setOption({
+                    series: [
+                        {
+                            data: this.list.map(item => ({value: item.price, name: item.name}))
+                        }
+                    ]
+                })
+            },
+            async deleteItem(id) {
+                await axios.delete(`https://applet-base-api-t.itheima.net/bill/${id}`)
+                this.getList()
+            },
+            async addItem() {
+                const res = await axios.post("https://applet-base-api-t.itheima.net/bill", {
+                    creator: 'wz',
+                    name: this.name,
+                    price: this.price
+                })
+                this.getList()
+                this.name = ''
+                this.price = ''
+            }
+        },
+        computed: {
+            totalPrice() {
+                return this.list.reduce((sum, item) => {
+                    return sum + item.price
+                }, 0)
+            }
         }
     })
 </script>
 </body>
-
 </html>
+<style>
+    .red {
+        color: red;
+    }
+
+    .hrz {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .chart {
+        width: 400px;
+        height: 400px;
+    }
+</style>
