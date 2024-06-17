@@ -1,4 +1,5 @@
 <script>
+import Bus from "@/utils/EventBus";
 export default {
     name: "WzFooter",
     props:{
@@ -8,6 +9,11 @@ export default {
         clearAll() {
             this.$emit('clearAll')
         }
+    },
+    created() {
+        Bus.$on('fromMain', (msg) => {
+            alert(msg + '已收到');
+        })
     }
 }
 </script>

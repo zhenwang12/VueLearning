@@ -1,4 +1,5 @@
 <script>
+import Bus from "@/utils/EventBus";
 export default {
     name: "WzMain",
     props: {
@@ -7,8 +8,9 @@ export default {
     methods: {
         deleteItem(id) {
             this.$emit('deleteItem', id)
+            Bus.$emit('fromMain', id)
         }
-    }
+    },
 }
 </script>
 
