@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="66de54c6-a80a-4dcc-87fa-8c6ea916d24c" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/Find.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/Home.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/Mine.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdvue/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdvue/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdvue/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdvue/babel.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdvue/jsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdvue/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdvue/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdvue/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdvue/qodana.sarif.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdvue/qodana.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdvue/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdvue/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdvue/src/components/MyTable.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdvue/src/components/MyTag.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdvue/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdvue/vue.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdvue/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Options API Component" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;zhenwang12&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/zhenwang12/VueLearning.git&quot;,
+    &quot;accountId&quot;: &quot;50478ec1-2098-4617-a173-4d79fff233a2&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2iOenttbvTZ8mt1KcsHIYhLFPtM" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;vue.recent.templates&quot;: [
+      &quot;Vue Options API Component&quot;
+    ]
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.17890.13" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="66de54c6-a80a-4dcc-87fa-8c6ea916d24c" name="更改" comment="" />
+      <created>1719366220555</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1719366220555</updated>
+      <workItem from="1719366221667" duration="7206000" />
+      <workItem from="1720487270981" duration="3208000" />
+      <workItem from="1721183851304" duration="4748000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
