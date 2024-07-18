@@ -5,10 +5,10 @@
         <div>
             <router-view></router-view>
         </div>
-        <div>
-            <a href="#/find">发现</a>
-            <a href="#/mine">我的</a>
-            <a href="#/home">首页</a>
+        <div class="footer_wrap">
+            <router-link to="/find">发现</router-link>
+            <router-link to="/mine">我的</router-link>
+            <router-link to="/home">首页</router-link>
         </div>
     </div>
 </template>
@@ -31,5 +31,18 @@ export default {
 }
 a {
     margin-right: 20px;
+}
+.footer_wrap {
+    background-color: green;
+}
+/*
+a.router-link-active 自动改选中的背景颜色  模糊匹配
+to='./find' => 地址栏可以是： /find, find/one. find/two
+
+a.router-link-exact-active精准匹配
+to='./find' => 地址栏只能是： /find
+*/
+.footer_wrap a.router-link-active {
+    background-color: purple;
 }
 </style>
