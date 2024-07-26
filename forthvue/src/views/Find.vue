@@ -5,7 +5,8 @@ export default {
 </script>
 
 <template>
-    <div>Find</div>
+    <!--动态传参  $route.params.words // words为index.js后面的/:words的参数名-->
+    <div>{{$route.params.words}}</div>
 </template>
 
 <style scoped>

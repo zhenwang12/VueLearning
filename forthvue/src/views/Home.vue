@@ -5,7 +5,7 @@ export default {
 </script>
 
 <template>
-    <div>Home</div>
+    <div>{{$route.query.key}}</div>
 </template>
 
 <style scoped>

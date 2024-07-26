@@ -8,10 +8,17 @@ import Vue from "vue";
 Vue.use(VueRouter)
 const router = new VueRouter({
     routes: [
-        {path: '/find', component: Find},
+        {path: "/", redirect: '/home'},
+        {path: '/find/:words', component: Find},
+        //动态路由 ':参数名', "/:words?" ?表示可选，可以传可以不传
+        // {path: '/find/:words', component: Find},
         {path: '/mine', component: Mine},
         {path: '/home', component: Home}
-    ]
+    ],
+    linkActiveClass: 'active',
+    linkExactActiveClass: 'exact-active',
+    // 去除链接里的#（需后端支持）
+    mode: "history"
 })
 
 export default router;
