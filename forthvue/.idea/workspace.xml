@@ -5,31 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66de54c6-a80a-4dcc-87fa-8c6ea916d24c" name="更改" comment="router-link">
-      <change afterPath="$PROJECT_DIR$/../interviewdemo/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interviewdemo/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interviewdemo/babel.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interviewdemo/jsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interviewdemo/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interviewdemo/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interviewdemo/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interviewdemo/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interviewdemo/src/assets/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interviewdemo/src/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interviewdemo/src/router/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interviewdemo/src/view/Article.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interviewdemo/src/view/ArticleDetail.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interviewdemo/src/view/Collect.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interviewdemo/src/view/HomePage.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interviewdemo/src/view/LikesPage.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interviewdemo/src/view/MinePage.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interviewdemo/vue.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interviewdemo/yarn.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cartdemo/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cartdemo/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cartdemo/babel.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cartdemo/jsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cartdemo/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cartdemo/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cartdemo/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cartdemo/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cartdemo/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cartdemo/src/components/CartItem.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cartdemo/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cartdemo/src/router/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cartdemo/src/store/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cartdemo/src/store/modules/cart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cartdemo/vue.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cartdemo/yarn.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Find.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Find.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Mine.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Mine.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +48,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/zhenwang12/VueLearning.git&quot;,
-    &quot;accountId&quot;: &quot;50478ec1-2098-4617-a173-4d79fff233a2&quot;
+    &quot;accountId&quot;: &quot;c4620d76-8f52-47fe-a8ac-a587ea5096a6&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -109,6 +101,8 @@
       <workItem from="1721183851304" duration="4748000" />
       <workItem from="1721263611871" duration="10112000" />
       <workItem from="1721725304128" duration="2394000" />
+      <workItem from="1722408168871" duration="23000" />
+      <workItem from="1722411187607" duration="4530000" />
     </task>
     <task id="LOCAL-00001" summary="路由">
       <option name="closed" value="true" />

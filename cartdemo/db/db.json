@@ -1,0 +1,39 @@
+{
+  "cart": [
+    {
+      "id": 1001,
+      "name": "鞋子男款",
+      "price": 128,
+      "count": 1,
+      "image": "https://yanxuan-item.nosdn.127.net/3a56a913e687dc2279473e325ea770a9.jpg"
+    },
+    {
+      "id": 1002,
+      "name": "鞋垫",
+      "price": 64,
+      "count": 0,
+      "image": "https://yanxuan-item.nosdn.127.net/dOa56474a8443cf6abd5afc539aa2476.jpg"
+    },
+    {
+      "id": 1003,
+      "name": "牙膏",
+      "price": 12,
+      "count": 2,
+      "image": "https://yanxuan-item.nosdn.127.net/eb1556fcc59e2fd98d9b0bc201dd4409.jpg"
+    },
+    {
+      "id": 1004,
+      "name": "T恤男款",
+      "price": 88,
+      "count": 5,
+      "image": "https://yanxuan-item.nosdn.127.net/3a56a913e687dc2279473e325ea770a9.jpg"
+    },
+    {
+      "id": 1005,
+      "name": "手机壳",
+      "price": 49,
+      "count": 3,
+      "image": "https://yanxuan-item.nosdn.127.net/eb1556fcc59e2fd98d9b0bc201dd4409.jpg"
+    }
+  ]
+}
