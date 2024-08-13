@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { Toast } from 'vant'
+import store from '@/store/index'
 
 // 创建axios实例
 const instance = axios.create({
@@ -19,6 +20,13 @@ instance.interceptors.request.use(function (config) {
     message: '加载中',
     duration: 0
   })
+
+  const token = store.getters.getUserToken
+  if (token) {
+    // 含有特殊字符时，用【】来表示
+    config.headers['Access-token'] = token
+    config.headers.platform = 'H5'
+  }
   // console.log(config)
   return config
 }, function (error) {

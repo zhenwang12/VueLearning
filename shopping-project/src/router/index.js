@@ -67,13 +67,17 @@ const authUrl = ['/pay', '/order']
 // 1. next()直接放行到to的路径
 // 2. next(路径)进行拦截，到next指定的路径
 router.beforeEach((to, from, next) => {
+// console.log(to, from, next)
+  // 看 to.path 是否在 authUrls 中出现过
   if (!authUrl.includes(to.path)) {
+    // 非权限页面，直接放行
     next()
-  } else {
-    next('/login')
+    return
   }
 
-  const token = store.getters.getUserToken
+  // 是权限页面，需要判断token
+  // store.state.userInfo.token
+  const token = store.getters.token
   if (token) {
     next()
   } else {

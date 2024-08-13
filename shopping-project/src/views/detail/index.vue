@@ -73,21 +73,57 @@
         <span>首页</span>
       </div>
       <div class="icon-cart">
-        <van-icon name="shopping-cart-o"/>
+        <span v-if="cartTotal > 0" class="num">{{ cartTotal }}</span>
+        <van-icon name="shopping-cart-o" />
         <span>购物车</span>
       </div>
-      <div class="btn-add">加入购物车</div>
-      <div class="btn-buy">立刻购买</div>
+      <div class="btn-add" @click="addToCart">加入购物车</div>
+      <div class="btn-buy" @click="buyItem">立刻购买</div>
     </div>
+
+    <van-action-sheet v-model="showPanel" :title="panelMode === 'cart' ? '加入购物车' : '立刻购买'">
+      <div class="product">
+        <div class="product-title">
+          <div class="left">
+            <img :src="detail.goods_image" alt="">
+          </div>
+          <div class="right">
+            <div class="price">
+              <span>¥</span>
+              <span class="nowprice">{{ detail.goods_price_min }}</span>
+            </div>
+            <div class="count">
+              <span>库存</span>
+              <span>{{ detail.stock_total }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="num-box">
+          <span>数量</span>
+          <CounterBox v-model="cartNumber"></CounterBox>
+        </div>
+        <div class="showbtn" v-if="detail.stock_total > 0">
+          <div class="btn" v-if="panelMode === 'cart'" @click="addCart">加入购物车</div>
+          <div class="btn now" v-else>立刻购买</div>
+        </div>
+        <div class="btn-none" v-else>该商品已抢完</div>
+      </div>
+    </van-action-sheet>
   </div>
 </template>
 
 <script>
 import { getGoodsComment, getProDetail } from '@/api/detail'
 import defaultAvatar from '@/assets/cart.png'
+import CounterBox from '@/components/CounterBox.vue'
+import { Dialog, Toast } from 'vant'
+import { addCart } from '@/api/cart'
 
 export default {
   name: 'ProDetail',
+  components: {
+    CounterBox
+  },
   data () {
     return {
       images: [
@@ -98,7 +134,11 @@ export default {
       detail: {},
       total: 0,
       comment: [],
-      defaultAvatar
+      defaultAvatar,
+      showPanel: false,
+      panelMode: 'cart',
+      cartNumber: 1,
+      cartTotal: 0
     }
   },
   computed: {
@@ -107,21 +147,57 @@ export default {
     }
   },
   methods: {
+    addToCart () {
+      this.panelMode = 'cart'
+      this.showPanel = true
+    },
+    buyItem () {
+      this.panelMode = 'buy'
+      this.showPanel = true
+    },
     onChange (index) {
       this.current = index
     },
+    async addCart () {
+      if (!this.$store.getters.getUserToken) {
+        Dialog.confirm({
+          title: '温馨提示',
+          message: '需要先登录',
+          confirmButtonText: '去登录',
+          cancelButtonText: '再逛逛'
+        }).then(() => {
+          // 跳转完再回来 this.$route.fullPath(会包含查询参数）
+          this.$router.replace({
+            path: '/login',
+            query: { backUrl: this.$route.fullPath }
+          })
+        }).catch(() => {
+          Dialog.close()
+        })
+      }
+
+      const { data } = await addCart(this.getId, this.cartNumber, this.detail.skuList[0].goods_sku_id)
+      this.cartTotal = data.cartTotal
+      Toast('加入购物车成功')
+      this.showPanel = false
+    },
     async getComments () {
-      const { data: { list, total } } = await getGoodsComment(this.getId, 5)
+      const {
+        data: {
+          list,
+          total
+        }
+      } = await getGoodsComment(this.getId, 5)
       this.comment = list
       this.total = total
-      console.log(list)
+      // console.log(list)
     },
     async getProDetail () {
-      console.log(this.getId)
+      // console.log(this.getId)
       const { data: { detail } } = await getProDetail(this.getId)
       this.detail = detail
       this.images = detail.goods_images
-      console.log(detail)
+      // console.log(detail)
     }
   },
   created () {
@@ -302,6 +378,7 @@ export default {
   .content {
     text-align: start;
   }
+
   .time {
     text-align: start;
   }
@@ -309,5 +386,77 @@ export default {
 
 .tips {
   padding: 10px;
+}
+
+.product {
+  .product-title {
+    display: flex;
+
+    .left {
+      img {
+        width: 90px;
+        height: 90px;
+      }
+
+      margin: 10px;
+    }
+
+    .right {
+      flex: 1;
+      padding: 10px;
+
+      .price {
+        font-size: 14px;
+        color: #fe560a;
+
+        .nowprice {
+          font-size: 24px;
+          margin: 0 5px;
+        }
+      }
+    }
+  }
+
+  .num-box {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+  }
+
+  .btn, .btn-none {
+    height: 40px;
+    line-height: 40px;
+    margin: 20px;
+    border-radius: 20px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color: rgb(255, 148, 2);
+  }
+
+  .btn.now {
+    background-color: #fe5630;
+  }
+
+  .btn-none {
+    background-color: #cccccc;
+  }
+}
+
+.footer .icon-cart {
+  position: relative;
+  padding: 0 6px;
+  .num {
+    z-index: 999;
+    position: absolute;
+    top: -2px;
+    right: 0;
+    min-width: 16px;
+    padding: 0 4px;
+    color: #fff;
+    text-align: center;
+    background-color: #ee0a24;
+    border-radius: 50%;
+  }
 }
 </style>

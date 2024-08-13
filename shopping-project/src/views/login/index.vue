@@ -55,7 +55,10 @@ export default {
         token: res.data.token
       })
       this.$toast('登录成功')
-      this.$router.push({ path: '/' })
+      // 地址栏是否有backUrl
+      const url = this.$route.query.backUrl || '/'
+      console.log(url)
+      this.$router.replace(url)
     }
   },
   data () {
