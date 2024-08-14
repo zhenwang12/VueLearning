@@ -77,7 +77,7 @@ router.beforeEach((to, from, next) => {
 
   // 是权限页面，需要判断token
   // store.state.userInfo.token
-  const token = store.getters.token
+  const token = store.getters.getUserToken
   if (token) {
     next()
   } else {
