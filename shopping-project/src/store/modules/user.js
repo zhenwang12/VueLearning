@@ -13,6 +13,13 @@ export default {
       setInfo(userinfo)
     }
   },
-  actions: {},
+  actions: {
+    logout (context) {
+      context.commit('setUserInfo', {})
+      // 跨模块调用mutation => cart
+      // root: true 全局模式
+      context.commit('cart/setCartList', [], { root: true })
+    }
+  },
   getters: {}
 }

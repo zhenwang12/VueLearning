@@ -79,19 +79,20 @@
 
       <!-- 买家留言 -->
       <div class="buytips">
-        <textarea placeholder="选填：买家留言（50字内）" name="" id="" cols="30" rows="10"></textarea>
+        <textarea v-model="remark" placeholder="选填：买家留言（50字内）" name="" id="" cols="30" rows="10"></textarea>
       </div>
     </div>
     <!-- 底部提交 -->
     <div class="footer-fixed">
       <div class="left">实付款：<span>￥ {{ order.orderTotalPrice }}</span></div>
-      <div class="tipsbtn" @click="goPay">提交订单</div>
+      <div class="tipsbtn" @click="submitOrder()">提交订单</div>
     </div>
   </div>
 </template>
 
 <script>
-import { getAddressList, checkoutOrder } from '@/api/pay'
+import { getAddressList, checkoutOrder, submitOrder } from '@/api/pay'
+import { Toast } from 'vant'
 
 export default {
   name: 'PayPage',
@@ -99,10 +100,32 @@ export default {
     return {
       addressList: [],
       order: {},
-      personal: {}
+      personal: {},
+      remark: ''
     }
   },
   methods: {
+    async submitOrder () {
+      if (this.mode === 'cart') {
+        const res = await submitOrder(this.mode, {
+          cartIds: this.cartId,
+          remark: this.remark
+        })
+        console.log(res)
+      }
+
+      if (this.mode === 'buyNow') {
+        const res = await submitOrder(this.mode, {
+          goodsId: this.getGoodsId,
+          goodsNum: this.getGoodsNum,
+          goodsSkuId: this.getSkuId,
+          remark: this.remark
+        })
+        console.log(res)
+      }
+      Toast('支付成功')
+      this.$router.replace('/order')
+    },
     async getAddressList () {
       const res = await getAddressList()
       this.addressList = res.data.list
@@ -117,13 +140,15 @@ export default {
 
       if (this.mode === 'buyNow') {
         console.log(this.getGoodsId, this.getGoodsNum, this.getSkuId)
-        const res = await checkoutOrder(this.mode, { goodsId: this.getGoodsId, goodsNum: this.getGoodsNum, goodsSkuId: this.getSkuId })
+        const res = await checkoutOrder(this.mode, {
+          goodsId: this.getGoodsId,
+          goodsNum: this.getGoodsNum,
+          goodsSkuId: this.getSkuId
+        })
         console.log(res)
         this.order = res.data.order
         this.personal = res.data.personal
       }
-    },
-    goPay () {
     }
   },
   created () {
