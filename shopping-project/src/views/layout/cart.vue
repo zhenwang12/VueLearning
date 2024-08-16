@@ -41,7 +41,9 @@
             <span>合计：</span>
             <span>¥ <i class="totalPrice">{{ checkoutTotal }}</i></span>
           </div>
-          <div @click="handleCheckOut" v-if="!isEdit" class="goPay" :class="{ disabled: checkedCount === 0 }">结算({{ checkedCount }})</div>
+          <div @click="handleCheckOut" v-if="!isEdit" class="goPay" :class="{ disabled: checkedCount === 0 }">
+            结算({{ checkedCount }})
+          </div>
           <div @click="handleDelete" v-else class="delete" :class="{ disabled: checkedCount === 0 }">删除</div>
         </div>
       </div>
@@ -114,7 +116,15 @@ export default {
       this.isEdit = false
     },
     handleCheckOut () {
-      this.$router.push('/pay')
+      if (this.checkedCount > 0) {
+        this.$router.push({
+          path: '/pay',
+          query: {
+            mode: 'cart',
+            cartId: this.checkedCartList.map(item => item.id).join(',') // 模式：'id, id, id'
+          }
+        })
+      }
     }
   }
 }

@@ -104,7 +104,7 @@
         </div>
         <div class="showbtn" v-if="detail.stock_total > 0">
           <div class="btn" v-if="panelMode === 'cart'" @click="addCart">加入购物车</div>
-          <div class="btn now" v-else>立刻购买</div>
+          <div class="btn now" v-else @click="goBuyNow">立刻购买</div>
         </div>
         <div class="btn-none" v-else>该商品已抢完</div>
       </div>
@@ -116,14 +116,18 @@
 import { getGoodsComment, getProDetail } from '@/api/detail'
 import defaultAvatar from '@/assets/cart.png'
 import CounterBox from '@/components/CounterBox.vue'
-import { Dialog, Toast } from 'vant'
+import { Toast } from 'vant'
 import { addCart } from '@/api/cart'
+import loginConfirm from '@/mixins/loginConfirm'
 
 export default {
   name: 'ProDetail',
   components: {
     CounterBox
   },
+  mixins: [
+    loginConfirm
+  ],
   data () {
     return {
       images: [
@@ -158,24 +162,24 @@ export default {
     onChange (index) {
       this.current = index
     },
-    async addCart () {
-      if (!this.$store.getters.getUserToken) {
-        Dialog.confirm({
-          title: '温馨提示',
-          message: '需要先登录',
-          confirmButtonText: '去登录',
-          cancelButtonText: '再逛逛'
-        }).then(() => {
-          // 跳转完再回来 this.$route.fullPath(会包含查询参数）
-          this.$router.replace({
-            path: '/login',
-            query: { backUrl: this.$route.fullPath }
-          })
-        }).catch(() => {
-          Dialog.close()
-        })
+    goBuyNow () {
+      if (this.loginDialog()) {
+        return
       }
-
+      this.$router.push({
+        path: '/pay',
+        query: {
+          mode: 'buyNow',
+          goodsId: this.getId,
+          goodsSkuId: this.detail.skuList[0].goods_sku_id,
+          goodsNum: this.cartNumber
+        }
+      })
+    },
+    async addCart () {
+      if (this.loginDialog()) {
+        return
+      }
       const { data } = await addCart(this.getId, this.cartNumber, this.detail.skuList[0].goods_sku_id)
       this.cartTotal = data.cartTotal
       Toast('加入购物车成功')
