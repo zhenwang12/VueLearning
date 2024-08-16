@@ -1,17 +1,20 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '@/views/login/index.vue'
-import Layout from '@/views/layout/index.vue'
-import Search from '@/views/search/index.vue'
-import SearchList from '@/views/search/list.vue'
-import Detail from '@/views/detail/index.vue'
-import Pay from '@/views/pay/index.vue'
-import Order from '@/views/order/index.vue'
-import Home from '@/views/layout/home.vue'
-import Category from '@/views/layout/category.vue'
-import Cart from '@/views/layout/cart.vue'
-import Mine from '@/views/layout/mine.vue'
 import store from '@/store'
+
+// 路由懒加载
+const Login = () => import('@/views/login/index.vue')
+const Search = () => import('@/views/search/index.vue')
+const SearchList = () => import('@/views/search/list.vue')
+const Detail = () => import('@/views/detail/index.vue')
+const Pay = () => import('@/views/pay/index.vue')
+const Order = () => import('@/views/order/index.vue')
+
+const Layout = () => import('@/views/layout/index.vue')
+const Home = () => import('@/views/layout/home.vue')
+const Category = () => import('@/views/layout/category.vue')
+const Cart = () => import('@/views/layout/cart.vue')
+const Mine = () => import('@/views/layout/mine.vue')
 
 Vue.use(VueRouter)
 
